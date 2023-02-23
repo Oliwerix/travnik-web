@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { get } from "svelte/store";
     import {getOrder, formatBytes, sizes} from '$lib/functions.ts'
 
     export let torrent
@@ -13,6 +12,12 @@
         </div>
         <div>
             found: {torrent.created.toISOString()}
+        </div>
+        <div>
+            files: {torrent.no_files}
+        </div>
+        <div>
+            <!-- relevance: {torrent.score} -->
         </div>
     </div>
 

@@ -2,14 +2,15 @@
     import {page} from '$app/stores'
     export let count:number
     $: current_page = parseInt($page.url.searchParams.get("p") || "0") 
-    let pages:number = Math.ceil(count / 100)
+    $: pages = Math.ceil(count / 100)
 
-    function getURL(i:number) {
+    $: getURL = (i:number) => {
          const params = new URLSearchParams($page.url.searchParams)
          params.set("p", i.toString())
          return $page.url.pathname + '?' + params.toString()
     }
 </script>
+{#if pages > 1}
 <div>
     {#if current_page > 0}
         <span><a href="{getURL(current_page-1)}">&#60&#60</a></span>
@@ -21,12 +22,14 @@
         <span><a href="{getURL(current_page+1)}">&#62&#62</a></span>
     {/if}
 </div>
+{/if}
 
 <style>
     div {
         display: flex;
         flex-direction: row;
         justify-content: center;
+        flex-wrap: wrap;
         gap: 0.5em;
         width: 100%;
     }

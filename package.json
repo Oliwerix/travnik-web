@@ -31,6 +31,7 @@
     },
     "type": "module",
     "dependencies": {
+        "@types/whois-json": "^2.0.2",
         "mongodb": "^5.0.1"
     }
 }

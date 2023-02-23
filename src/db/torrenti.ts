@@ -1,4 +1,4 @@
 import db from '$db/mongo'
 
-export const torrenti = db.collection('torrenti_js')
+export const torrenti = db.collection('torrenti')
 

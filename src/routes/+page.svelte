@@ -1,44 +1,64 @@
 <script lang="ts">
 	import type { PageData } from "./$types";
     import { page } from '$app/stores'
+    import { navigating } from '$app/stores'
     import Torrent from "./Torrent.svelte";
     import Pager from './Pager.svelte'
     export let data: PageData;
 
     $: ({torrents} = data)
     $: ({count} = data)
+    $: ({status} = data)
 </script>
-
 <h1>Search</h1>
 <form method="get">
     <input type="search" name="q" id="q" value={$page.url.searchParams.get("q")}>
     <button>Search</button>
+    <select name="s" id="s">
+        <option value="n">Normal</option>
+        <option value="reg">Regex</option>
+    </select>
+    <!-- <select name="s" id="s">
+        <option value="rel">Relevance</option>
+        <option value="filA">Files Ascending</option>
+        <option value="filD">Files Descending</option>
+        <option value=""></option>
+        <option value=""></option>
+        <option value=""></option>
+        <option value=""></option>
+        <option value=""></option>
+    </select> -->
 </form>
 <hr>
-{count}
-{#if torrents.length>0}
-<h4>Found {count} results</h4>
-    <Pager {count} />
+{#if $navigating === null}
+    {#if status}
+    <h4>Found {count} results</h4>
+        <Pager {count} />
+        {#each torrents as torrent}
+            <Torrent {torrent}></Torrent>
+        {/each}
+        <Pager {count} />
+        <hr><br>
+    {:else if $page.url.searchParams.get('q') !== null && $page.url.searchParams.get('q') !== ""}
+    <h4>No results found</h4>
+    {:else}
+    <p>Use the box above to search for torrents</p>
+    <h2>{count} torrents in database</h2>
+    <h2>10 Latest torrents:</h2>
     {#each torrents as torrent}
-        <Torrent {torrent}></Torrent>
+    <Torrent {torrent}></Torrent>
     {/each}
-    <Pager {count} />
-    <hr><br>
-{:else if $page.url.searchParams.get("q") != null}
-<h4>No results found</h4>
+    {/if}
 {:else}
-<p>Use the box above to search for torrents</p>
-
+    Loading...
 {/if}
-
-
 
 
 <style>
     form {
         margin: 1em;
     }
-    input, button {
+    input, button, select {
         font-size: 1em;
         padding: 0.25em;
     }

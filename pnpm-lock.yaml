@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@sveltejs/adapter-auto': ^2.0.0
   '@sveltejs/kit': ^1.5.0
+  '@types/whois-json': ^2.0.2
   '@typescript-eslint/eslint-plugin': ^5.45.0
   '@typescript-eslint/parser': ^5.45.0
   eslint: ^8.28.0
@@ -18,6 +19,7 @@ specifiers:
   vite: ^4.0.0
 
 dependencies:
+  '@types/whois-json': 2.0.2
   mongodb: 5.0.1
 
 devDependencies:
@@ -404,6 +406,10 @@ packages:
     dependencies:
       '@types/node': 18.14.0
       '@types/webidl-conversions': 7.0.0
+    dev: false
+
+  /@types/whois-json/2.0.2:
+    resolution: {integrity: sha512-qUmdWOjzVE5cksQe2W2v+cScswBJsWuFb8ry0eizm4rldirEfubZC/1Dr/0FjFwQFK//LQHUUQ0IWkSH+gZxsw==}
     dev: false
 
   /@typescript-eslint/eslint-plugin/5.53.0_ny4s7qc6yg74faf3d6xty2ofzy:
