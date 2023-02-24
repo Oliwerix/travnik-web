@@ -10,4 +10,10 @@ export function formatBytes(bytes:number, decimals:number = 2) {
 
     return `${parseFloat((bytes / Math.pow(k, i)).toFixed(dm))} ${sizes[i]}`
 }
+export function get_ip(ip:string) {
+    ip = ip.split("/")[0]
+    if (ip.split(":")[2] == "ffff")
+        return ip.split(":")[3]
+    return ip
+}
 
