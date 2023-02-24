@@ -1,5 +1,5 @@
-<script>
-    export let files
+<script lang="ts">
+    export let files:Array<{path: string, name:string, length:number, offset: number}>
 </script>
 
 <ul>

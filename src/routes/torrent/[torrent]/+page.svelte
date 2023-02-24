@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { navigating } from '$app/stores';
-    import { formatBytes } from '$lib/functions.ts'
+    import { formatBytes } from '$lib/functions'
     import Spinner from '$lib/Spinner.svelte'
     import type {PageData} from './$types'
     import ListView from './ListView.svelte';
@@ -9,7 +9,7 @@
     export let data: PageData;
     let whois_loopkup = "";
     let tree_view = false
-    function get_ip(ip) {
+    function get_ip(ip:string) {
         ip = ip.split("/")[0]
         if (ip.split(":")[2] == "ffff")
             return ip.split(":")[3]
@@ -23,7 +23,7 @@
     <table>
         <tr>
             <td>magnet</td>
-            <td><a href="magnet:?xt=urn:btih:{torrent.infoHash}">magnet <img src="/icon-magnet.gif"></a></td>
+            <td><a href="magnet:?xt=urn:btih:{torrent.infoHash}">magnet <img src="/icon-magnet.gif" alt="magnet icon"></a></td>
         </tr>
         <tr>
             <td>found</td>
