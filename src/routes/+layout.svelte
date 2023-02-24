@@ -26,6 +26,7 @@
         margin: 0;
     }
     div.content {
-        margin: 0.5rem
+        height: 100%;
+        padding: 0 0.5em;
     }
 </style>

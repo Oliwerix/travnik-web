@@ -10,8 +10,6 @@ let sorts = {
         name: 1
     }
 }
-
-
 export const load: PageServerLoad = async function(request) {
     const params = await request.url.searchParams
     let search = params.get('q')

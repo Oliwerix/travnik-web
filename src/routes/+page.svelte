@@ -2,6 +2,7 @@
 	import type { PageData } from "./$types";
     import { page } from '$app/stores'
     import { navigating } from '$app/stores'
+    import Spinner from "$lib/Spinner.svelte";
     import Torrent from "./Torrent.svelte";
     import Pager from './Pager.svelte'
 
@@ -52,7 +53,7 @@
     {/each}
     {/if}
 {:else}
-    Loading...
+    <Spinner>Loading</Spinner>
 {/if}
 
 
