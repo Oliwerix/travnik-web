@@ -17,10 +17,12 @@ specifiers:
   tslib: ^2.4.1
   typescript: ^4.9.3
   vite: ^4.0.0
+  whoiser: ^1.16.0
 
 dependencies:
   '@types/whois-json': 2.0.2
   mongodb: 5.0.1
+  whoiser: 1.16.0
 
 devDependencies:
   '@sveltejs/adapter-auto': 2.0.0_@sveltejs+kit@1.8.3
@@ -1852,6 +1854,13 @@ packages:
     dependencies:
       isexe: 2.0.0
     dev: true
+
+  /whoiser/1.16.0:
+    resolution: {integrity: sha512-bO75zkColwjMz7eLOfa0Vcps1IaXlQGFJ0OaGXMvh37/aIKHHv4kJvNlfIo7qHfBt5he8SDWZVULOoGHs0XnOg==}
+    engines: {node: '>=15.0.0'}
+    dependencies:
+      punycode: 2.3.0
+    dev: false
 
   /word-wrap/1.2.3:
     resolution: {integrity: sha512-Hz/mrNwitNRh/HUAtM/VT/5VH+ygD6DV7mYKZAtHOrbs8U7lvPS6xf7EJKMF0uW1KJCl0H701g3ZGus+muE5vQ==}

@@ -1,13 +1,19 @@
 <script lang="ts">
     import { formatBytes } from '$lib/functions.ts'
-	import { onMount } from 'svelte';
     import type {PageData} from './$types'
     import ListView from './ListView.svelte';
     // import TreeView from './TreeView.svelte';
-    // import whois from 'whois-json'
+    // import whoiser from 'whoiser'
+	import { error } from '@sveltejs/kit';
     export let data: PageData;
     let whois_loopkup = "";
     let tree_view = false
+    function get_ip(ip) {
+        ip = ip.split("/")[0]
+        if (ip.split(":")[2] == "ffff")
+            return ip.split(":")[3]
+        return ip
+    }
     $: ({ torrent } = data)
 </script>
 <h1 class="torrent_name">{torrent.name}</h1>
@@ -34,7 +40,15 @@
     </tr>
     <tr>
         <td>ip</td>
-        <td>{torrent.source.ip} {whois_loopkup}</td>
+        <td>{torrent.source.ip}
+            <!-- {#await whoiser.ip(get_ip(torrent.source.ip))}
+                Loading
+            {:then whois} 
+                {whois}
+            {:catch error}
+                {error}
+            {/await} -->
+        </td>
     </tr>
 </table>
 

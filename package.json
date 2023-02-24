@@ -32,6 +32,7 @@
     "type": "module",
     "dependencies": {
         "@types/whois-json": "^2.0.2",
-        "mongodb": "^5.0.1"
+        "mongodb": "^5.0.1",
+        "whoiser": "^1.16.0"
     }
 }
