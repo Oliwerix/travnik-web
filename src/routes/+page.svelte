@@ -15,8 +15,10 @@
 </script>
 <h1>Search</h1>
 <form method="get">
-    <input type="search" name="q" id="q" value={$page.url.searchParams.get("q")}>
-    <button>Search</button>
+    <div class="search">
+        <input type="search" name="q" id="q" value={$page.url.searchParams.get("q")}>
+        <button>Search</button>
+    </div>
     <select name="s" id="s" value={$page.url.searchParams.get("s") || "n"}>
         <option value="n">Normal</option>
         <option value="reg">Regex</option>
@@ -61,11 +63,33 @@
     form {
         margin: 1em;
     }
-    input, button, select {
+    input {
+        border: 2px solid var(--accent-color);
+        border-right: none;
+        border-radius: 5px 0 0 5px;
+        color: var(--accent-color);
+    }
+    input:focus {
+        color: black;
+    }
+    button {
+        border: 2px solid var(--accent-color);
+        border-radius: 0 5px 5px 0;
+        color: var(--accent-color);
+
+    }
+    input, button {
         font-size: 1em;
         padding: 0.25em;
+        margin: 0;
+        background-color: var(--light-accent-color);
     }
     h4 {
         margin: 0.2em;
+    }
+    .search {
+        display: flex;
+        position: relative;
+        margin-bottom: 1em;
     }
 </style>

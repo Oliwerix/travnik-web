@@ -18,7 +18,7 @@
         color: white;
     }
     nav {
-        background-color: #ff4700;
+        background-color: var(--accent-color);
         margin: 0;
         padding: 0.5rem 1rem;
     }

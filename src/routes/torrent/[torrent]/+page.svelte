@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { navigating } from '$app/stores';
-    import { formatBytes } from '$lib/functions'
+    import { formatBytes, get_ip } from '$lib/functions'
     import Spinner from '$lib/Spinner.svelte'
     import type {PageData} from './$types'
     import ListView from './ListView.svelte';
@@ -9,12 +9,7 @@
     export let data: PageData;
     let whois_loopkup = "";
     let tree_view = false
-    function get_ip(ip:string) {
-        ip = ip.split("/")[0]
-        if (ip.split(":")[2] == "ffff")
-            return ip.split(":")[3]
-        return ip
-    }
+
     $: ({ torrent } = data)
 </script>
 {#if $navigating === null}
@@ -43,7 +38,7 @@
         </tr>
         <tr>
             <td>ip</td>
-            <td>{torrent.source.ip}
+            <td>{get_ip(torrent.source.ip)}
                 <!-- {#await whoiser.ip(get_ip(torrent.source.ip))}
                     Loading
                 {:then whois} 
