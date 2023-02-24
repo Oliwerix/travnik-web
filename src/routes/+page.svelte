@@ -4,6 +4,8 @@
     import { navigating } from '$app/stores'
     import Torrent from "./Torrent.svelte";
     import Pager from './Pager.svelte'
+
+
     export let data: PageData;
 
     $: ({torrents} = data)
@@ -14,7 +16,7 @@
 <form method="get">
     <input type="search" name="q" id="q" value={$page.url.searchParams.get("q")}>
     <button>Search</button>
-    <select name="s" id="s">
+    <select name="s" id="s" value={$page.url.searchParams.get("s") || "n"}>
         <option value="n">Normal</option>
         <option value="reg">Regex</option>
     </select>
