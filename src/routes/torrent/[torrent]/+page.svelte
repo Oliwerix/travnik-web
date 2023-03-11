@@ -18,7 +18,7 @@
     <table>
         <tr>
             <td>magnet</td>
-            <td><a href="magnet:?xt=urn:btih:{torrent.infoHash}">magnet <img src="/icon-magnet.gif" alt="magnet icon"></a></td>
+            <td><a href="magnet:?xt=urn:btih:{torrent.infoHash}&dn={encodeURIComponent(torrent.name)}">magnet <img src="/icon-magnet.gif" alt="magnet icon"></a></td>
         </tr>
         <tr>
             <td>found</td>
