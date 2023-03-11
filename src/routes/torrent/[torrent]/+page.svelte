@@ -48,6 +48,10 @@
                 {/await} -->
             </td>
         </tr>
+        <tr>
+            <td>found by</td>
+            <td>{torrent.createdBy.split(" ")[3] ?? "b"}</td>
+        </tr>
     </table>
     <h2>Files:</h2>
         <ListView files={torrent.files} />
