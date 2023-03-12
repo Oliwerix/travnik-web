@@ -49,7 +49,7 @@
     {:else}
     <p>Use the box above to search for torrents</p>
     <h2>{count} torrents in database</h2>
-    <h2>10 Latest torrents:</h2>
+    <h2>25 Latest torrents:</h2>
     {#each torrents as torrent}
     <Torrent {torrent}></Torrent>
     {/each}
@@ -70,7 +70,7 @@
         color: var(--accent-color);
     }
     input:focus {
-        color: black;
+        color: var(--negative-font-color);
     }
     button {
         border: 2px solid var(--accent-color);
@@ -82,7 +82,7 @@
         font-size: 1em;
         padding: 0.25em;
         margin: 0;
-        background-color: var(--light-accent-color);
+        background-color: var(--background-accent-color);
     }
     h4 {
         margin: 0.2em;

@@ -31,7 +31,7 @@ export const load: PageServerLoad = async function(request) {
     let data, count
     let status
     if(search === null || search == "") {
-        data = torrenti.find({}, {limit: 10, sort: {created: -1}, projection: {
+        data = torrenti.find({}, {limit: 25, sort: {created: -1}, projection: {
             name: 1, 
             created: 1,
             _id: 0, 
