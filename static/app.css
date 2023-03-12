@@ -1,6 +1,32 @@
 :root {
     --accent-color: #ff4700;
-    --light-accent-color: rgb(255, 237, 222);
+    --background-accent-color: rgb(255, 237, 222);
+    --accent-color-light: rgb(255, 188, 157);
+    --font-color: black;
+    --font-color-negative: white;
+    --background-color: white;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --accent-color: #e65c00;
+        --background-accent-color: rgb(20, 20, 20);
+        --accent-color-light: rgb(158, 41, 20);
+
+        --font-color: rgb(231, 231, 231);
+        --font-color-negative: black;
+        --background-color: black;
+        --a-color: lightblue;
+    }
+
+    a {
+        color: var(--a-color)
+    }
+}
+
+:root {
+    color: var(--font-color);
+
 }
 
 html {
@@ -8,6 +34,7 @@ html {
     margin: 0;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--background-color);
 }
 
 body {
@@ -15,6 +42,8 @@ body {
     padding: 0;
     min-height: 80%;
 }
+
+
 
 /* .content {
     min-height: 80%;
@@ -41,7 +70,7 @@ h1 {
 
 .MB {
     background-color: rgb(78, 201, 78);
-    color: white;
+    color: black;
 }
 
 .GB {

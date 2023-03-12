@@ -92,4 +92,9 @@
         position: relative;
         margin-bottom: 1em;
     }
+    select {
+        background-color: var(--background-accent-color);
+        color: var(--font-color);
+    }
+
 </style>

@@ -27,11 +27,11 @@
     div.torrent {
         display: flex;
         flex-direction: column;
-        background-color: rgb(255, 237, 222);
+        background-color: var(--background-accent-color);
         margin: 0.2em 0;
         padding: 0.5em;
         border-radius: 12px;
-        border: .2em solid rgb(255, 188, 157);
+        border: .18em solid var(--accent-color-light);
     }
     div.row {
         display: flex;
@@ -43,7 +43,7 @@
         margin: 0;
     }
     a {
-        color: black;
+        color: var(--font-color);
     }
     a:visited {
         color: rgb(100, 100, 100);
