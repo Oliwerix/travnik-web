@@ -23,6 +23,11 @@
         <option value="n">Normal</option>
         <option value="reg">Regex</option>
     </select>
+    <select name="srt" id="srt" value={$page.url.searchParams.get("srt") || "rel"}>
+        <option value="rel">Normal</option>
+        <option value="name">By name</option>
+        <option value="date">Latest</option>
+    </select>
     <!-- <select name="s" id="s">
         <option value="rel">Relevance</option>
         <option value="filA">Files Ascending</option>

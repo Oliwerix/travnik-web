@@ -8,6 +8,9 @@ let sorts = {
     },
     "name": {
         name: 1
+    },
+    "date": {
+        created:-1
     }
 }
 export const load: PageServerLoad = async function(request) {
