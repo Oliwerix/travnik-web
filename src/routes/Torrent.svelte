@@ -52,6 +52,7 @@
         font-weight: bold;
         border-radius: 1em;
         font-size: 0.9em;
+        white-space: nowrap;
         padding: 0.2em;
     }
 
