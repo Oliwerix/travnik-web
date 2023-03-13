@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { navigating } from '$app/stores';
-    import { formatBytes, get_ip } from '$lib/functions'
+    import { formatBytes, get_ip, clean_files } from '$lib/functions'
     import Spinner from '$lib/Spinner.svelte'
     import type {PageData} from './$types'
     import ListView from './ListView.svelte';
@@ -34,7 +34,7 @@
         </tr>
         <tr>
             <td>files</td>
-            <td>{torrent.files.length}</td>
+            <td>{clean_files(torrent.files).length}</td>
         </tr>
         <tr>
             <td>ip</td>
