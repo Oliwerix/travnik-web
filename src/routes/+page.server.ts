@@ -27,7 +27,10 @@ export const load: PageServerLoad = async function(request) {
             {'$text': {'$search': search}}
         ,
         "reg": 
-            {$or: [{ name: new RegExp(search)},{ 'files.name': new RegExp(search)}, {'source.ip': new RegExp(search)}]}
+            {$or: [{ name: new RegExp(search)}]},
+        "regi":
+            {$or: [{ name: new RegExp(search)}]}
+
          
     }
     

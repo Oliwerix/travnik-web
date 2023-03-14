@@ -12,6 +12,7 @@
     $: ({torrents} = data)
     $: ({count} = data)
     $: ({status} = data)
+
 </script>
 <h1>Search</h1>
 <form method="get">
@@ -22,6 +23,7 @@
     <select name="s" id="s" value={$page.url.searchParams.get("s") || "n"}>
         <option value="n">Normal</option>
         <option value="reg">Regex</option>
+        <option value="regi">Regex case insensitive</option>
     </select>
     <select name="srt" id="srt" value={$page.url.searchParams.get("srt") || "rel"}>
         <option value="rel">Normal</option>
