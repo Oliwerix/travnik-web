@@ -53,4 +53,12 @@ export function clean_files(files:Filelist): Filelist{
     }
     return files
 }
-
+/**
+ * Generates a magnet link from torrent 
+ * FIXME: not working for V2 torrent
+ * @param torrent torrent object
+ * @returns string for magnet
+ */
+export function get_magnet(torrent): string {
+    return `magnet:?xt=urn:btih:${torrent.infoHash}&dn=${encodeURIComponent(torrent.name)}`
+}

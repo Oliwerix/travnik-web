@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { navigating } from '$app/stores';
-    import { formatBytes, get_ip, clean_files } from '$lib/functions'
+    import { formatBytes, get_ip, clean_files, get_magnet } from '$lib/functions'
     import Spinner from '$lib/Spinner.svelte'
     import type {PageData} from './$types'
     import ListView from './ListView.svelte';
@@ -18,7 +18,7 @@
     <table>
         <tr>
             <td>magnet</td>
-            <td><a href="magnet:?xt=urn:btih:{torrent.infoHash}&dn={encodeURIComponent(torrent.name)}">magnet <img src="/icon-magnet.gif" alt="magnet icon"></a></td>
+            <td><a href={get_magnet(torrent)}>magnet <img src="/icon-magnet.gif" alt="magnet icon"></a></td>
         </tr>
         <tr>
             <td>found</td>

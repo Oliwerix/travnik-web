@@ -1,5 +1,5 @@
 <script lang="ts">
-    import {getOrder, formatBytes, sizes} from '$lib/functions.ts'
+    import {getOrder, formatBytes, sizes, get_magnet } from '$lib/functions.ts'
 
     export let torrent
 
@@ -16,6 +16,7 @@
         <div>
             files: {torrent.no_files}
         </div>
+        <div><a href={get_magnet(torrent)}><img src="icon-magnet.gif" alt="magnet"></a></div>
         <div>
             <!-- relevance: {torrent.score} -->
         </div>
