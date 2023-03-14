@@ -11,7 +11,7 @@
             size:  <span class="size {sizes[getOrder(torrent.length)]}">{formatBytes(torrent.length)} </span>
         </div>
         <div>
-            found: {torrent.created.toISOString()}
+            found: {`${torrent.created.toLocaleDateString()} ${torrent.created.toLocaleTimeString()}`}
         </div>
         <div>
             files: {torrent.no_files}
