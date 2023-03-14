@@ -10,7 +10,12 @@ let sorts = {
         name: 1
     },
     "date": {
-        created:-1
+        created:-1,
+        name: 1
+    },
+    "files": {
+        no_files: -1,
+        name: 1
     }
 }
 export const load: PageServerLoad = async function(request) {
@@ -25,9 +30,9 @@ export const load: PageServerLoad = async function(request) {
     let queries = {
         "n": 
             {'$text': {'$search': search}},
-        "regf": 
+        "regt": 
             {$or: [{ name: new RegExp(search)}]},
-        "regif":
+        "regit":
             {$or: [{ name: new RegExp(search, "i")}]},
         "reg":
             {$or: [{ name: new RegExp(search)},{ 'files.name': new RegExp(search)}, {'source.ip': new RegExp(search)}]},

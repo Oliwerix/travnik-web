@@ -25,13 +25,14 @@
         <option value="n">Normal</option>
         <option value="reg">Regex</option>
         <option value="regi">Regex case insensitive</option>
-        <option value="regf">Regex filename</option>
-        <option value="regif">Regex filename case insensitive</option>
+        <option value="regt">Regex title</option>
+        <option value="regit">Regex title case insensitive</option>
     </select>
     <select name="srt" id="srt" value={$page.url.searchParams.get("srt") || "rel"}>
         <option value="rel">Normal</option>
         <option value="name">Alphabetically</option>
         <option value="date">Latest</option>
+        <option value="files">No Files</option>
     </select>
     <!-- <select name="s" id="s">
         <option value="rel">Relevance</option>
