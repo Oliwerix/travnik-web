@@ -24,12 +24,15 @@ export const load: PageServerLoad = async function(request) {
     const page:number = parseInt(params.get('p') || "0")
     let queries = {
         "n": 
-            {'$text': {'$search': search}}
-        ,
-        "reg": 
+            {'$text': {'$search': search}},
+        "regf": 
             {$or: [{ name: new RegExp(search)}]},
+        "regif":
+            {$or: [{ name: new RegExp(search, "i")}]},
+        "reg":
+            {$or: [{ name: new RegExp(search)},{ 'files.name': new RegExp(search)}, {'source.ip': new RegExp(search)}]},
         "regi":
-            {$or: [{ name: new RegExp(search)}]}
+            {$or: [{ name: new RegExp(search, "i")},{ 'files.name': new RegExp(search, "i")}, {'source.ip': new RegExp(search, "i")}]}
 
          
     }

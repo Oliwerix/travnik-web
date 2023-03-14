@@ -6,6 +6,7 @@
     import Torrent from "./Torrent.svelte";
     import Pager from './Pager.svelte'
 
+    let advanced = false;
 
     export let data: PageData;
 
@@ -24,10 +25,12 @@
         <option value="n">Normal</option>
         <option value="reg">Regex</option>
         <option value="regi">Regex case insensitive</option>
+        <option value="regf">Regex filename</option>
+        <option value="regif">Regex filename case insensitive</option>
     </select>
     <select name="srt" id="srt" value={$page.url.searchParams.get("srt") || "rel"}>
         <option value="rel">Normal</option>
-        <option value="name">By name</option>
+        <option value="name">Alphabetically</option>
         <option value="date">Latest</option>
     </select>
     <!-- <select name="s" id="s">
