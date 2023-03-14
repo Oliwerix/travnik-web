@@ -27,6 +27,7 @@
         <option value="regi">Regex case insensitive</option>
         <option value="regt">Regex title</option>
         <option value="regit">Regex title case insensitive</option>
+        <option value="regip">Regex only ip</option>
     </select>
     <select name="srt" id="srt" value={$page.url.searchParams.get("srt") || "rel"}>
         <option value="rel">Normal</option>

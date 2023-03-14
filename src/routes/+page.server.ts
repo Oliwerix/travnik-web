@@ -31,14 +31,15 @@ export const load: PageServerLoad = async function(request) {
         "n": 
             {'$text': {'$search': search}},
         "regt": 
-            {$or: [{ name: new RegExp(search)}]},
+            { name: new RegExp(search)},
         "regit":
-            {$or: [{ name: new RegExp(search, "i")}]},
+            { name: new RegExp(search, "i")},
         "reg":
             {$or: [{ name: new RegExp(search)},{ 'files.name': new RegExp(search)}, {'source.ip': new RegExp(search)}]},
         "regi":
-            {$or: [{ name: new RegExp(search, "i")},{ 'files.name': new RegExp(search, "i")}, {'source.ip': new RegExp(search, "i")}]}
-
+            {$or: [{ name: new RegExp(search, "i")},{ 'files.name': new RegExp(search, "i")}, {'source.ip': new RegExp(search, "i")}]},
+        "regip":
+            {'source.ip': new RegExp(search, "i")}
          
     }
     
