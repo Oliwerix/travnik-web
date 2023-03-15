@@ -33,7 +33,8 @@
         <option value="rel">Normal</option>
         <option value="name">Alphabetically</option>
         <option value="date">Latest</option>
-        <option value="files">No Files</option>
+        <option value="files">File count</option>
+        <option value="size">Torrent size</option>
     </select>
     <!-- <select name="s" id="s">
         <option value="rel">Relevance</option>

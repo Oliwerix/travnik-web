@@ -16,6 +16,10 @@ let sorts = {
     "files": {
         no_files: -1,
         name: 1
+    },
+    "size": {
+        length: -1,
+        name: 1
     }
 }
 export const load: PageServerLoad = async function(request) {
