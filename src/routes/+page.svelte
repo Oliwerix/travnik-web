@@ -2,14 +2,11 @@
 	import type { PageData } from "./$types";
     import { page } from '$app/stores'
     import { navigating } from '$app/stores'
-    import Spinner from "$lib/Spinner.svelte";
+    import SearchingSpinner from "$lib/SearchingSpinner.svelte";
     import Torrent from "./Torrent.svelte";
     import Pager from './Pager.svelte'
 
-    let advanced = false;
-
     export let data: PageData;
-
     $: ({torrents} = data)
     $: ({count} = data)
     $: ({status} = data)
@@ -68,7 +65,7 @@
     {/each}
     {/if}
 {:else}
-    <Spinner>Loading</Spinner>
+    <SearchingSpinner></SearchingSpinner>
 {/if}
 
 

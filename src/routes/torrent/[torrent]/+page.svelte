@@ -1,7 +1,5 @@
 <script lang="ts">
-	import { navigating } from '$app/stores';
     import { formatBytes, get_ip, clean_files, get_magnet } from '$lib/functions'
-    import Spinner from '$lib/Spinner.svelte'
     import type {PageData} from './$types'
     import ListView from './ListView.svelte';
     // import TreeView from './TreeView.svelte';
@@ -12,7 +10,6 @@
 
     $: ({ torrent } = data)
 </script>
-{#if $navigating === null}
 
     <h1 class="torrent_name">{torrent.name}</h1>
     <table>
@@ -55,9 +52,6 @@
     </table>
     <h2>Files:</h2>
         <ListView files={torrent.files} />
-{:else}
-    <Spinner>Loading</Spinner>
-{/if}
 <!-- tree_view: <input type="checkbox" name="tree_view" id="tree_view" bind:checked={tree_view}>
 {tree_view}
 

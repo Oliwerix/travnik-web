@@ -1,9 +1,10 @@
 <script>
     import { SyncLoader } from 'svelte-loading-spinners'
     const color = "#ff4700"
+    export let fontsize = "2em"
 </script>
 <div class="center">
-    <div class="not" style="color: {color};">
+    <div class="not" style="color: {color}; font-size: {fontsize};">
         <SyncLoader {color}></SyncLoader>
         <slot></slot>
 
