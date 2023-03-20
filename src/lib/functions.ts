@@ -62,3 +62,11 @@ export function clean_files(files:Filelist): Filelist{
 export function get_magnet(torrent): string {
     return `magnet:?xt=urn:btih:${torrent.infoHash}&dn=${encodeURIComponent(torrent.name)}`
 }
+/**
+ * Formats a number to some (?) locale
+ * @param number input number
+ * @returns 
+ */
+export function formatNumber(number:number):string {
+    return Intl.NumberFormat().format(number)
+}

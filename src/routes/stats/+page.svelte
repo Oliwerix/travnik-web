@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { PageData } from "./$types";
     import Chart from 'svelte-frappe-charts'
-    import { formatBytes } from '$lib/functions'
+    import { formatBytes, formatNumber } from '$lib/functions'
 
     let axisOptions = {
                 xAxisMode: "tick",
@@ -35,14 +35,17 @@
 
 <h3>Torrent statistics</h3>
 <div>Size of all torrents: {formatBytes(total_stats[0].totalSize,4)}</div>
-<div>{total_stats[0].files} files indexed</div>
-<div>{distinct_ips.length} unique ips</div>
+<div>{total_stats[0].files.toLocaleString()} files indexed</div>
+<div>{distinct_ips.length.toLocaleString()} unique ips</div>
 
-
-<h3>Active travnik nodes</h3>
-<ul>
-    {#each active_nodes[0].nodes as node}
-        <li>{node.split(" ")[3]}</li>
-    {/each}
-</ul>
+{#if active_nodes.length}
+    <h3>Active travnik nodes</h3>
+    <ul>
+        {#each active_nodes as node}
+            <li>{node.split(" ")[3]}</li>
+        {/each}
+    </ul>
+{:else}
+    <h3>No travnik nodes active</h3>
+{/if}
 <Chart data={get_chartdata(torrents_per_day)} type='bar' colors={['#ff4700']} axisOptions={axisOptions} lineOptions={{'hide_dots': 1}}/>

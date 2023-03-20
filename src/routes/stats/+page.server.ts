@@ -3,31 +3,47 @@ import { torrenti } from "$db/torrenti";
 
 export const load: PageServerLoad = async function(request) {
     let lastHour = new Date()
+    let last5min = new Date()
     let lastDay = new Date()
     let lastWeek = new Date()
     lastHour.setHours(lastHour.getHours()-1)
     lastDay.setDate(lastDay.getDate()-1)
     lastWeek.setDate(lastDay.getDate()-7)
+    last5min.setMinutes(last5min.getMinutes()-5)
+    
+    let totalStats = torrenti.aggregate([
+      {
+        '$group': {
+          '_id': null, 
+          'totalSize': {
+            '$sum': '$length'
+          }, 
+          'files': {
+            '$sum': {
+              '$cond': {
+                'if': {
+                  '$isArray': '$files'
+                }, 
+                'then': {
+                  '$size': '$files'
+                }, 
+                'else': 0
+              }
+            }
+          }
+        }
+      }
+    ]).toArray()
 
     let hour = torrenti.countDocuments({created: {$gt: lastHour}})
     let day = torrenti.countDocuments({created: {$gt: lastDay}})
     let count = torrenti.estimatedDocumentCount()
-    let active_nodes = torrenti.aggregate([
+    let active_nodes = torrenti.distinct('createdBy',
         {
-          '$match': {
             'created': {
-              '$gt': lastHour
+              '$gt': last5min
             }
-          }
-        }, {
-          '$group': {
-            '_id': null, 
-            'nodes': {
-              '$addToSet': '$createdBy'
-            }
-          }
-        }
-      ]).toArray()
+          })
     let torrents_per_day = torrenti.aggregate(
       [
         {'$match': {
@@ -55,29 +71,6 @@ export const load: PageServerLoad = async function(request) {
         }
       ]
     ).toArray()
-    let totalStats = torrenti.aggregate([
-      {
-        '$group': {
-          '_id': null, 
-          'totalSize': {
-            '$sum': '$length'
-          }, 
-          'files': {
-            '$sum': {
-              '$cond': {
-                'if': {
-                  '$isArray': '$files'
-                }, 
-                'then': {
-                  '$size': '$files'
-                }, 
-                'else': 0
-              }
-            }
-          }
-        }
-      }
-    ]).toArray()
     let distinctIps = torrenti.distinct('source.ip')
     return {
         count: await count,
