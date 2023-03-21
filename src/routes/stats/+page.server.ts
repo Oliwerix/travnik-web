@@ -1,7 +1,7 @@
 import type { PageServerLoad } from "./$types";
 import { torrenti } from "$db/torrenti";
 
-export const load: PageServerLoad = async function(request) {
+export const load: PageServerLoad = async function({setHeaders}) {
     let lastHour = new Date()
     let last5min = new Date()
     let lastDay = new Date()
@@ -10,7 +10,7 @@ export const load: PageServerLoad = async function(request) {
     lastDay.setDate(lastDay.getDate()-1)
     lastWeek.setDate(lastDay.getDate()-7)
     last5min.setMinutes(last5min.getMinutes()-5)
-    
+
     let totalStats = torrenti.aggregate([
       {
         '$group': {
@@ -72,6 +72,11 @@ export const load: PageServerLoad = async function(request) {
       ]
     ).toArray()
     let distinctIps = torrenti.distinct('source.ip')
+    
+      setHeaders({
+        'cache-control': 'max-age=60, stale-while-revalidate=300'
+      })
+
     return {
         count: await count,
         day: await day,

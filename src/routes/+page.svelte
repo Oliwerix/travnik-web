@@ -33,6 +33,7 @@
         <option value="files">File count</option>
         <option value="size">Torrent size</option>
     </select>
+    <input type="hidden" id="p" name="p" value="0">
     <!-- <select name="s" id="s">
         <option value="rel">Relevance</option>
         <option value="filA">Files Ascending</option>

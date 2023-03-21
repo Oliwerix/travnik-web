@@ -23,8 +23,8 @@ let sorts = {
         name: 1
     }
 }
-export const load: PageServerLoad = async function(request) {
-    const params = await request.url.searchParams
+export const load: PageServerLoad = async function({url, setHeaders}) {
+    const params = await url.searchParams
     let search = params.get('q') || ""
     let sort = sorts[params.get('srt') || "rel"] || sorts["rel"]
     let search_type = params.get('s') || "n"
@@ -94,6 +94,9 @@ export const load: PageServerLoad = async function(request) {
         }).toArray();
         count =  torrenti.countDocuments(queries[search_type])
 
+        setHeaders({
+            'cache-control': 'max-age=60, stale-while-revalidate=180'
+        })
     }
     return {
         status: status,
