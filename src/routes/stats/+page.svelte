@@ -2,6 +2,7 @@
 	import type { PageData } from "./$types";
     import Chart from 'svelte-frappe-charts'
     import { formatBytes, formatNumber } from '$lib/functions'
+    import { Pulse } from "svelte-loading-spinners";
 
     let axisOptions = {
                 xAxisMode: "tick",
@@ -23,6 +24,9 @@
             ],
         }
     }
+    async function get_total_stats() {        
+        return fetch('/stats/total').then((response) => response.json())
+    }
 
     export let data: PageData;
     $: ({count, day, hour, active_nodes, torrents_per_day, total_stats, distinct_ips} = data)
@@ -34,8 +38,16 @@
 <div>{hour} new torrents last hour</div>
 
 <h3>Torrent statistics</h3>
-<div>Size of all torrents: {formatBytes(total_stats[0].totalSize,4)}</div>
-<div>{total_stats[0].files.toLocaleString()} files indexed</div>
+{#await get_total_stats()}
+<div style="margin: 0.25em;">
+    <Pulse/>
+</div>
+
+{:then total_stats} 
+    <div>Size of all torrents: {formatBytes(total_stats[0].totalSize,4)}</div>
+    <div>{total_stats[0].files.toLocaleString()} files indexed</div>
+{/await}
+
 <div>{distinct_ips.length.toLocaleString()} unique ips</div>
 
 {#if active_nodes.length}

@@ -11,30 +11,6 @@ export const load: PageServerLoad = async function({setHeaders}) {
     lastWeek.setDate(lastDay.getDate()-7)
     last5min.setMinutes(last5min.getMinutes()-5)
 
-    let totalStats = torrenti.aggregate([
-      {
-        '$group': {
-          '_id': null, 
-          'totalSize': {
-            '$sum': '$length'
-          }, 
-          'files': {
-            '$sum': {
-              '$cond': {
-                'if': {
-                  '$isArray': '$files'
-                }, 
-                'then': {
-                  '$size': '$files'
-                }, 
-                'else': 0
-              }
-            }
-          }
-        }
-      }
-    ]).toArray()
-
     let hour = torrenti.countDocuments({created: {$gt: lastHour}})
     let day = torrenti.countDocuments({created: {$gt: lastDay}})
     let count = torrenti.estimatedDocumentCount()
@@ -83,7 +59,6 @@ export const load: PageServerLoad = async function({setHeaders}) {
         hour: await hour,
         active_nodes: await active_nodes,
         torrents_per_day: await torrents_per_day,
-        total_stats: await totalStats,
         distinct_ips: await distinctIps
     }
 }
