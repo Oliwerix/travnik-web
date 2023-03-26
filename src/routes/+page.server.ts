@@ -71,6 +71,9 @@ export const load: PageServerLoad = async function({url, setHeaders}) {
         }}).toArray()
         count = torrenti.estimatedDocumentCount()
         status = false
+        setHeaders({
+            'cache-control': 'max-age=5, stale-while-revalidate=60'
+        })
     } else {
         status = true
         data = torrenti.aggregate([
@@ -95,7 +98,7 @@ export const load: PageServerLoad = async function({url, setHeaders}) {
         count =  torrenti.countDocuments(queries[search_type])
 
         setHeaders({
-            'cache-control': 'max-age=60, stale-while-revalidate=180'
+            'cache-control': 'max-age=60, stale-while-revalidate=240'
         })
     }
     return {
